@@ -1,8 +1,13 @@
 // MoodHub Application
 
+// API Keys
+
+
 // Mood Selection
-    // display mood cards and message to the user
-    //get user input, mood card selection
+    // Array -  to store moon cards
+    // Function - display mood cards and message to the user
+    // Form - get user input, mood card selection
+    // Function - to clear form
 
 // Artist & Playlist Info
     //Youtube API & fetch
