@@ -1,4 +1,4 @@
-// MoodHub Application
+// MoodMatch Application
 
 // API Keys
 const youtubeApiKey = '';
