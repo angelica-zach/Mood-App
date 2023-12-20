@@ -20,6 +20,12 @@ const googleMapsApiUrl = '';
     // Form - get user input, mood card selection
     // Function - to clear form
 
+    // display mood cards and message to the user
+//have several premade cards? with a drop down sel
+    //get user input, mood card selection
+//local storage ? collect stats?
+
+
 // Artist & Playlist Info
     // Fetch - Youtube data
     // Display playlist to user
@@ -31,3 +37,5 @@ const googleMapsApiUrl = '';
 
 // Initial display of mood cards on page load
 displayMoodCards();
+
+//get image

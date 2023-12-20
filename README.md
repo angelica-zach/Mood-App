@@ -13,6 +13,7 @@
 ## Full Description
 MoodMatch is a web application that helps users discover music playlists based on their mood, provides information about venues related to the artists in the playlist, and suggests activities in the area.
 
+
 URL of deployed app:  https://angelica-zach.github.io/Mood-App/
 
 ## Features
@@ -41,7 +42,7 @@ URL of deployed app:  https://angelica-zach.github.io/Mood-App/
 
 ## Screenshot
 
-![MoodHub App Screenshot](./assets/mood-match-screenshot.png)
+![MoodMatch App Screenshot](./assets/mood-match-screenshot.png)
 
 ## Usage
 
@@ -58,3 +59,4 @@ URL of deployed app:  https://angelica-zach.github.io/Mood-App/
 ## License
 
 Please refer to the LICENSE in the repo.
+
