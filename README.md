@@ -30,7 +30,7 @@ URL of deployed app:  https://angelica-zach.github.io/Mood-App/
    - Based on the selected artist, the application fetches information about venues where the artist has performed.
    - Users can view details about these venues, including location and upcoming events.
 
-4. **Local Activities:**
+4. BONUS FUNCTIONALITY = **Local Activities:**
    - The application suggests activities in the area of the selected venue.
    - Activities could include local attractions, events, or places of interest.
   
@@ -49,9 +49,10 @@ URL of deployed app:  https://angelica-zach.github.io/Mood-App/
 ## Credits
 
    #### APIS
-   - YouTube
-   - Google Maps 
-   - MusixXmatch
+   - YouTube API
+   - MusixXmatch API
+
+   - BONUS FUNCTIONALITY -  Google Maps API
 
 
 ## License
