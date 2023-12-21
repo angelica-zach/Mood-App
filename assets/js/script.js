@@ -120,8 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // ... (Rest of your code)
 });
 
-// MoodHub Application
-=======
 // MoodMatch Application
 
 // API Keys
