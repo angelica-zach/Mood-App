@@ -14,6 +14,7 @@
     // Display playlist to user
     // Musixmatch API & fetch
     // Display artist and playlist information to the user
+//get image
 
 
 // BONUS - Venue Info
