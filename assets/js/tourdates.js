@@ -11,7 +11,8 @@ function searchBandsInTown(artist) {
       .then(function (data) {
         // Printing the entire object to console
         console.log(data);
+        $('#tour-dates').attr("href", data.url).text(data.name + ' : See Tour Dates');
       });
   }
 
-searchBandsInTown("Taylor Swift");
+searchBandsInTown("Taylor Swift"); //an example to show taylor swift tour dates.
