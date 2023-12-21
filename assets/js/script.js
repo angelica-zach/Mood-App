@@ -31,3 +31,5 @@ const googleMapsApiUrl = '';
 
 // Initial display of mood cards on page load
 displayMoodCards();
+
+//get image
