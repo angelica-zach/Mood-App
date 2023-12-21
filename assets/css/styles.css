@@ -1,0 +1,73 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .page-background {
+    padding: 20px;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .mood-card {
+    width: 200px;
+    height: 250px;
+    background-color: #8A2BE2;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    animation: fadeInUp 0.5s ease-out;
+    transition: background-color 0.3s ease-out;
+  }
+  
+  .mood-card:hover {
+    background-color: #6A5ACD;
+  }
+  
+  #spotifyPlayerContainer {
+    background-color: #333;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+  
+  h1, h2 {
+    color: #FFD700;
+  }
+  
+  #playlistInfo, #venueInfo, #localActivities {
+    margin-top: 30px;
+  }
+  
+  #playlistInfo h2, #venueInfo h2, #localActivities h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  

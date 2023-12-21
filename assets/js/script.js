@@ -1,16 +1,8 @@
-// MoodMatch Application
-
 document.addEventListener("DOMContentLoaded", function () {
-  const storedSearchesContainer = document.getElementById(
-    "storedSearchesContainer"
-  );
+  const storedSearchesContainer = document.getElementById("storedSearchesContainer");
   const searchInput = document.getElementById("searchInput");
-  const moodPlaylistsContainer = document.getElementById(
-    "moodPlaylistsContainer"
-  );
-  const spotifyPlayerContainer = document.getElementById(
-    "spotifyPlayerContainer"
-  );
+  const moodPlaylistsContainer = document.getElementById("moodPlaylistsContainer");
+  const spotifyPlayerContainer = document.getElementById("spotifyPlayerContainer");
 
   let searchInputValue = "";
   let accessToken = "";
@@ -18,35 +10,35 @@ document.addEventListener("DOMContentLoaded", function () {
   let selectedPlaylistUri = "";
 
   // API Keys
-const youtubeApiKey = '';
-const musixmatchApiKey = '';
-const googleMapsApiKey = '';
+  const youtubeApiKey = 'YOUR_YOUTUBE_API_KEY';
+  const musixmatchApiKey = 'YOUR_MUSIXMATCH_API_KEY';
+  const googleMapsApiKey = 'YOUR_GOOGLE_MAPS_API_KEY';
 
-// API URLs
-const youtubeApiUrl = '';
-const musixmatchApiUrl = '';
-const googleMapsApiUrl = '';
+  // API URLs
+  const youtubeApiUrl = 'YOUR_YOUTUBE_API_URL';
+  const musixmatchApiUrl = 'YOUR_MUSIXMATCH_API_URL';
+  const googleMapsApiUrl = 'YOUR_GOOGLE_MAPS_API_URL';
 
-// Mood Selection
-    /* Array -  to store moods
-    const moods = ['Happy', 'Chill', 'Energetic', 'Relaxed', 'Excited', 'Calm', 'Upbeat', 'Peaceful', 'Playful'];
-    }
-    Form - get user input, mood card selection
-    Function - to clear form */
+  // Mood Selection
+  const moods = ['Happy', 'Chill', 'Energetic', 'Relaxed', 'Excited', 'Calm', 'Upbeat', 'Peaceful', 'Playful'];
 
-// Artist & Playlist Info
-    // Fetch - Spofity data
-    // Display playlist to user
-    // Display artist and playlist information to the user
-  
-  // Spotify Function
-
-  function getSearchInput() {
-    searchInputValue = searchInput.value;
-    console.log("Search input value:", searchInputValue);
-    search(searchInputValue);
+  function displayMoodCards() {
+    moodPlaylistsContainer.innerHTML = "";
+    moods.forEach((mood) => {
+      const moodCard = document.createElement("div");
+      moodCard.className = "mood-card";
+      moodCard.textContent = mood;
+      moodCard.onclick = () => selectMood(mood);
+      moodPlaylistsContainer.appendChild(moodCard);
+    });
   }
 
+  function clearForm() {
+    searchInput.value = "";
+    displayMoodCards();
+  }
+
+  // Artist & Playlist Info
   function search(searchValue) {
     authenticateSpotify()
       .then((accessToken) => {
@@ -60,9 +52,6 @@ const googleMapsApiUrl = '';
       })
       .then((response) => {
         const playlists = response.data.playlists.items;
-        console.log("Playlists:", playlists);
-
-        // Render the retrieved playlists
         renderMoodPlaylists(playlists);
       })
       .catch((error) => {
@@ -71,9 +60,8 @@ const googleMapsApiUrl = '';
   }
 
   function authenticateSpotify() {
-    // REPLACE CLIENT ID
-    const clientId = "32d73e004d394cde9908ed44bb84ecf0";
-    const clientSecret = "f791c6b679b9427eb385a0ea33e44c92";
+    const clientId = 'YOUR_SPOTIFY_CLIENT_ID';
+    const clientSecret = 'YOUR_SPOTIFY_CLIENT_SECRET';
 
     const base64Credentials = btoa(`${clientId}:${clientSecret}`);
 
@@ -96,10 +84,10 @@ const googleMapsApiUrl = '';
   }
 
   function renderMoodPlaylists(playlists) {
-    moodPlaylistsContainer.innerHTML = ""; // Clear previous content
-
+    moodPlaylistsContainer.innerHTML = "";
     playlists.forEach((playlist) => {
       const playlistDiv = document.createElement("div");
+      playlistDiv.className = "mood-card";
       playlistDiv.style.borderRadius = "1rem";
       playlistDiv.style.boxShadow = "4px 1px 30px rgba(219, 52, 235)";
 
@@ -128,9 +116,6 @@ const googleMapsApiUrl = '';
 
   function getPlaylistID(uri) {
     selectedPlaylistUri = uri;
-    console.log("Selected Playlist URI:", selectedPlaylistUri);
-
-    // Optionally, you can proceed with loading the selected mood to the playlist
     loadMoodToPlaylist();
   }
 
@@ -138,9 +123,9 @@ const googleMapsApiUrl = '';
     // Implement load mood to playlist logic here
   }
 
-  const searchButton = document.getElementById("searchButton");
-  searchButton.addEventListener("click", getSearchInput);
-});
+  // Other functions from your original code...
 
-// Venue Info
-    // Google Maps API data
+  // Initial setup
+  displayMoodCards();
+  clearForm();
+});
