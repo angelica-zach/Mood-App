@@ -1,31 +1,27 @@
-// MoodMatch Application
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Get references to HTML elements
   const storedSearchesContainer = document.getElementById("storedSearchesContainer");
   const searchInput = document.getElementById("searchInput");
   const moodPlaylistsContainer = document.getElementById("moodPlaylistsContainer");
   const spotifyPlayerContainer = document.getElementById("spotifyPlayerContainer");
 
-  // Initialize variables to store user input and API data
   let searchInputValue = "";
   let accessToken = "";
   let moodPlaylists = [];
   let selectedPlaylistUri = "";
 
-  // API Keys (replace placeholders with your actual keys)
-  const spotifyClientId = 'YOUR_SPOTIFY_CLIENT_ID';
-  const spotifyClientSecret = 'YOUR_SPOTIFY_CLIENT_SECRET';
+  // API Keys
+  const youtubeApiKey = 'YOUR_YOUTUBE_API_KEY';
+  const musixmatchApiKey = 'YOUR_MUSIXMATCH_API_KEY';
   const googleMapsApiKey = 'YOUR_GOOGLE_MAPS_API_KEY';
 
   // API URLs
-  const spotifyApiUrl = 'https://api.spotify.com/v1';
-  const googleMapsApiUrl = 'https://maps.googleapis.com/maps/api';
+  const youtubeApiUrl = 'YOUR_YOUTUBE_API_URL';
+  const musixmatchApiUrl = 'YOUR_MUSIXMATCH_API_URL';
+  const googleMapsApiUrl = 'YOUR_GOOGLE_MAPS_API_URL';
 
   // Mood Selection
   const moods = ['Happy', 'Chill', 'Energetic', 'Relaxed', 'Excited', 'Calm', 'Upbeat', 'Peaceful', 'Playful'];
 
-  // Function to display mood cards on the webpage
   function displayMoodCards() {
     moodPlaylistsContainer.innerHTML = "";
     moods.forEach((mood) => {
@@ -37,18 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Function to clear the search form and display mood cards
   function clearForm() {
     searchInput.value = "";
     displayMoodCards();
   }
 
   // Artist & Playlist Info
-  // Function to search for playlists based on user input
   function search(searchValue) {
     authenticateSpotify()
       .then((accessToken) => {
-        const searchEndpoint = `${spotifyApiUrl}/search?q=${searchValue}&type=playlist`;
+        const searchEndpoint = `https://api.spotify.com/v1/search?q=${searchValue}&type=playlist`;
 
         return axios.get(searchEndpoint, {
           headers: {
@@ -65,9 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Function to authenticate with the Spotify API
   function authenticateSpotify() {
-    const base64Credentials = btoa(`${spotifyClientId}:${spotifyClientSecret}`);
+    const clientId = 'YOUR_SPOTIFY_CLIENT_ID';
+    const clientSecret = 'YOUR_SPOTIFY_CLIENT_SECRET';
+
+    const base64Credentials = btoa(`${clientId}:${clientSecret}`);
 
     return axios
       .post(
@@ -87,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Function to render mood playlists on the webpage
   function renderMoodPlaylists(playlists) {
     moodPlaylistsContainer.innerHTML = "";
     playlists.forEach((playlist) => {
@@ -119,25 +114,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Function to get the selected playlist ID
   function getPlaylistID(uri) {
     selectedPlaylistUri = uri;
     loadMoodToPlaylist();
   }
 
-  // Function to load mood to playlist (placeholder for now)
   function loadMoodToPlaylist() {
     // Implement load mood to playlist logic here
   }
 
-  // Google Maps API
-  function getVenueInfo() {
-    // Implement Google Maps API logic here
-    // You can use the 'googleMapsApiKey' to authenticate your requests
-  }
+  // Other functions from your original code...
 
   // Initial setup
   displayMoodCards();
   clearForm();
 });
-

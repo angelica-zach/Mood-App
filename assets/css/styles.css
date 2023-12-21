@@ -1,33 +1,50 @@
-body {
-    font-family: 'Press Start 2P', cursive;
-    background-color: #000;
-    color: #fff;
+/* Reset some default styles */
+body, h1, h2, h3, p, ul {
     margin: 0;
+    padding: 0;
+  }
+  
+  h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #f5f5f5;
   }
   
   .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h1 {
     text-align: center;
+    color: #8A2BE2;
+    margin-top: 20px;
   }
   
   .page-background {
+    background-color: #fff;
     padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   }
   
-  input {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #333;
-    color: #fff;
-    border: none;
+  .search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
   }
   
-  button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+  #moodPlaylistsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
   
   .mood-card {
@@ -47,27 +64,29 @@ body {
     transition: background-color 0.3s ease-out;
   }
   
-  .mood-card:hover {
-    background-color: #6A5ACD;
+  /* Animation for fadeInUp */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
-  #spotifyPlayerContainer {
-    background-color: #333;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
+  button {
+    background-color: #8A2BE2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-out;
   }
   
-  h1, h2 {
-    color: #FFD700;
+  button:hover {
+    background-color: #6A1B9A;
   }
-  
-  #playlistInfo, #venueInfo, #localActivities {
-    margin-top: 30px;
-  }
-  
-  #playlistInfo h2, #venueInfo h2, #localActivities h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
