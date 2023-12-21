@@ -1,4 +1,14 @@
-// MoodHub Application
+// MoodMatch Application
+
+// API Keys
+const youtubeApiKey = '';
+const musixmatchApiKey = '';
+const googleMapsApiKey = '';
+
+// API URLs
+const youtubeApiUrl = '';
+const musixmatchApiUrl = '';
+const googleMapsApiUrl = '';
 
 // API Keys
 const youtubeApiKey = '';
@@ -33,3 +43,4 @@ const googleMapsApiUrl = '';
 displayMoodCards();
 
 //get image
+
