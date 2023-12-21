@@ -28,24 +28,17 @@ const musixmatchApiUrl = '';
 const googleMapsApiUrl = '';
 
 // Mood Selection
-    // Array -  to store moods
+    /* Array -  to store moods
     const moods = ['Happy', 'Chill', 'Energetic', 'Relaxed', 'Excited', 'Calm', 'Upbeat', 'Peaceful', 'Playful'];
-    // Function - mood cards and message
-    function displayMoodCards() {
-        const moodCardsContainer = document.getElementById('moodCards');
     }
-    // Form - get user input, mood card selection
-    // Function - to clear form
+    Form - get user input, mood card selection
+    Function - to clear form */
 
 // Artist & Playlist Info
     // Fetch - Spofity data
     // Display playlist to user
     // Display artist and playlist information to the user
-    
-// Venue Info
-    // Google Maps API data
-
-
+  
   // Spotify Function
 
   function getSearchInput() {
@@ -149,7 +142,5 @@ const googleMapsApiUrl = '';
   searchButton.addEventListener("click", getSearchInput);
 });
 
-// Initial display of mood cards on page load
-displayMoodCards();
-
-//get image
+// Venue Info
+    // Google Maps API data

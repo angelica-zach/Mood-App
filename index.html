@@ -10,11 +10,36 @@
 <body>
   <div class="container">
     <h1>MoodHub</h1>
-    <div id="moodSelection">
-      <p>Select your mood:</p>
-      <div id="moodCards"></div>
-      <button onclick="clearForm()">Clear Selection</button>
+   
+    <div class="page-background">
+      <!-- Stored searches buttons -->
+      <div class="Newbutton" id="storedSearchesContainer"></div>
+  
+      <!-- Search input and button -->
+      <div class="container">
+        <div style="border-radius: 1rem; box-shadow: 0px 10px 30px rgba(219, 52, 235);">
+          <div class="mb-3" size="xl">
+            <input id="searchInput" placeholder="Search for Moods" type="input">
+            <button id="searchButton" style="font-size: 15px;">Get into Your mood</button>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Display mood playlists -->
+      <div class="container">
+        <div class="row row-cols-3 mx-auto g-3" style="width: 100%;" id="moodPlaylistsContainer"></div>
+      </div>
+  
+      <!-- Spotify player section -->
+      <div class="container">
+        <div class="container" style="border-radius: 1rem; box-shadow: 0px 10px 30px rgba(219, 52, 235);">
+          <div class="hidden" id="spotifyPlayerContainer">
+            <!-- Spotify player will be loaded here -->
+          </div>
+        </div>
+      </div>
     </div>
+
     <div id="playlistInfo">
       <h2>Playlist and Artist Information</h2>
       <div id="playlist"></div>
@@ -27,35 +52,6 @@
     <div id="localActivities">
       <h2>Local Activities</h2>
       <div id="activities"></div>
-    </div>
-  </div>
-
-  <div class="page-background">
-    <!-- Stored searches buttons -->
-    <div class="Newbutton" id="storedSearchesContainer"></div>
-
-    <!-- Search input and button -->
-    <div class="container">
-      <div style="border-radius: 1rem; box-shadow: 0px 10px 30px rgba(219, 52, 235);">
-        <div class="mb-3" size="xl">
-          <input id="searchInput" placeholder="Search for Moods" type="input">
-          <button id="searchButton" style="font-size: 15px;">Get into Your mood</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Display mood playlists -->
-    <div class="container">
-      <div class="row row-cols-3 mx-auto g-3" style="width: 100%;" id="moodPlaylistsContainer"></div>
-    </div>
-
-    <!-- Spotify player section -->
-    <div class="container">
-      <div class="container" style="border-radius: 1rem; box-shadow: 0px 10px 30px rgba(219, 52, 235);">
-        <div class="hidden" id="spotifyPlayerContainer">
-          <!-- Spotify player will be loaded here -->
-        </div>
-      </div>
     </div>
   </div>
 
