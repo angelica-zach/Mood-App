@@ -10,6 +10,16 @@ const youtubeApiUrl = '';
 const musixmatchApiUrl = '';
 const googleMapsApiUrl = '';
 
+// API Keys
+const youtubeApiKey = '';
+const musixmatchApiKey = '';
+const googleMapsApiKey = '';
+
+// API URLs
+const youtubeApiUrl = '';
+const musixmatchApiUrl = '';
+const googleMapsApiUrl = '';
+
 // Mood Selection
     // Array -  to store moods
     const moods = ['Happy', 'Chill', 'Energetic', 'Relaxed', 'Excited', 'Calm', 'Upbeat', 'Peaceful', 'Playful'];
@@ -19,12 +29,6 @@ const googleMapsApiUrl = '';
     }
     // Form - get user input, mood card selection
     // Function - to clear form
-
-    // display mood cards and message to the user
-//have several premade cards? with a drop down sel
-    //get user input, mood card selection
-//local storage ? collect stats?
-
 
 // Artist & Playlist Info
     // Fetch - Youtube data
@@ -39,3 +43,4 @@ const googleMapsApiUrl = '';
 displayMoodCards();
 
 //get image
+
