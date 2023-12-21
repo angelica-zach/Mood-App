@@ -3,18 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+
   <title>MoodMatch</title>
 </head>
 <body>
   <div class="container">
-    <h1>MoodHub</h1>
-    <div id="moodSelection">
-      <p>Select your mood:</p>
-      <div id="moodCards"></div>
-      <button onclick="clearForm()">Clear Selection</button>
+    <h1>MoodMatch</h1>
+    <div class="page-background">
+      <div class="Newbutton" id="storedSearchesContainer"></div>
+      <div class="container">
+        <div class="search-container">
+          <input id="searchInput" placeholder="Search for Moods" type="input">
+          <button id="searchButton">Get into Your Mood</button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row row-cols-3 mx-auto g-3" id="moodPlaylistsContainer"></div>
+      </div>
+      <div class="container">
+        <div class="container" id="spotifyPlayerContainer"></div>
+      </div>
     </div>
     <div id="playlistInfo">
       <h2>Playlist and Artist Information</h2>
