@@ -42,6 +42,19 @@ function searchEvents(artist) {
         }
         
         console.log(upcomingEvents);
+        $('#venues').empty();
+        $('#venues').append("<h3> Upcoming Events for this artist");
+        for (let i=0; i < upcomingEvents.length; i ++) {
+
+            let date = dayjs(upcomingEvents[i].dateTime).format("D/M/YYYY");
+            let time = dayjs(upcomingEvents[i].dateTime).format('h A');
+
+            $('#venues').append("<div class='card text-bg-dark m-3 p-3 col-3'>");
+            $('#venues').children().eq(i+1).append('<h5 class=card-title>' + artist);
+            $('#venues').children().eq(i+1).append('<p class=card-text>' + upcomingEvents[i].city + ', ' + upcomingEvents[i].country);
+            $('#venues').children().eq(i+1).append('<p class=card-text> TIME PLACEHOLDER');
+        }
+        
         return upcomingEvents;
       });
   }
