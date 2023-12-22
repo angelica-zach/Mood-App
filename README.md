@@ -1,23 +1,30 @@
-<<<<<<< HEAD
-=======
 # Mood-App
 
-### Project Plan for "MoodHub"
+## Table of Contents
 
-#### Overview:
+- [Full Description](#full-description)
+- [Features](#features)
+- [How to Use](#how-to-use)
+- [Screenshot](#screenshot)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
 
-**Project Name:** MoodHub
+## Full Description
 
-**Description:** MoodHub is a web application that helps users discover music playlists based on their mood, provides information about venues related to the artists in the playlist, and suggests activities in the area.
+MoodMatch is a web application that helps users discover music playlists based on their mood, provides information about venues related to the artists in the playlist, and suggests activities in the area.
 
-#### Features and Layouts:
+URL of deployed app:  https://angelica-zach.github.io/Mood-App/
+
+## Features
 
 1. **Mood Selection:**
    - Users start by selecting a mood card or similar element.
    - Each mood card represents a specific category or genre of music.
 
 2. **Playlist and Artist Information:**
-   - After selecting a mood, users are presented with a curated playlist on YouTube.
+   - After selecting a mood, users are presented with a curated playlist on Spotify.
+
    - Information about the artists in the playlist is displayed, sourced from a server-side API.
    - Users can explore details about each artist, such as upcoming events or popular albums.
 
@@ -34,4 +41,31 @@
 - **YouTube API:** Integration for playlist retrieval.
 - **Google Maps** 
 - MusixXmatch
->>>>>>> b0a16adbf49dcd2eec9b409c50eaa522c7bc438c
+
+4. **Local Activities:**
+   - The application suggests activities in the area of the selected venue.
+   - Activities could include local attractions, events, or places of interest.
+
+## How to Use
+
+
+
+## Screenshot
+
+![MoodHub App Screenshot](./assets/moodhub-screenshot.png)
+
+## Usage
+
+
+## Credits
+
+   #### APIS
+   - YouTube API
+   - MusixXmatch API
+
+   - BONUS FUNCTIONALITY -  Google Maps API
+
+
+## License
+
+Please refer to the LICENSE in the repo.
