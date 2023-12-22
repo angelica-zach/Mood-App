@@ -1,24 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const storedSearchesContainer = document.getElementById(
-    "storedSearchesContainer"
-  );
-  const searchInput = document.getElementById("searchInput");
-  const moodPlaylistsContainer = document.getElementById(
-    "moodPlaylistsContainer"
-  );
-  const spotifyPlayerContainer = document.getElementById(
-    "spotifyPlayerContainer"
-  );
+$(document).ready(function () {
+    // get HTML elements
+  const storedSearchesContainer = $("#storedSearchesContainer");
+  const searchInput = $("#searchInput");
+  const moodPlaylistsContainer = $("#moodPlaylistsContainer");
+  const spotifyPlayerContainer = $("#spotifyPlayerContainer");
 
   let searchInputValue = "";
   let accessToken = "";
   let moodPlaylists = [];
   let selectedPlaylistUri = "";
 
-  // Define your functions here
-
+  //Search for mood
   function getSearchInput() {
-    searchInputValue = searchInput.value;
+    searchInputValue = searchInput.val();
     console.log("Search input value:", searchInputValue);
     search(searchInputValue);
   }
@@ -28,18 +22,26 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((accessToken) => {
         const searchEndpoint = `https://api.spotify.com/v1/search?q=${searchValue}&type=playlist`;
 
-        return axios.get(searchEndpoint, {
+        return $.ajax({
+          url: searchEndpoint,
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
       })
       .then((response) => {
-        const playlists = response.data.playlists.items;
-        console.log("Playlists:", playlists);
+        const playlists = response.playlists.items;
+        console.log(
+          "Playlists:",
+          playlists,
+          response,
+          response.playlists.items[0].tracks
+        );
 
-        // Render the retrieved playlists
-        renderMoodPlaylists(playlists);
+        // Render the first playlist only
+        if (playlists.length > 0) {
+          renderMoodPlaylist(playlists[0]);
+        }
       })
       .catch((error) => {
         console.error("Error searching for playlists:", error);
@@ -49,73 +51,90 @@ document.addEventListener("DOMContentLoaded", function () {
   function authenticateSpotify() {
     // REPLACE CLIENT ID
     const clientId = "32d73e004d394cde9908ed44bb84ecf0";
-    const clientSecret = "f791c6b679b9427eb385a0ea33e44c92";
+    const clientSecret = "dc306bcd04bb4d3c9d538a086c448a04";
 
     const base64Credentials = btoa(`${clientId}:${clientSecret}`);
 
-    return axios
-      .post(
-        "https://accounts.spotify.com/api/token",
-        "grant_type=client_credentials",
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            Authorization: `Basic ${base64Credentials}`,
-          },
-        }
-      )
-      .then((response) => response.data.access_token)
+    return $.ajax({
+      type: "POST",
+      url: "https://accounts.spotify.com/api/token",
+      data: "grant_type=client_credentials",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Basic ${base64Credentials}`,
+      },
+    })
+      .then((response) => response.access_token)
       .catch((error) => {
         console.error("Error authenticating with Spotify:", error);
         throw error;
       });
   }
 
-  function renderMoodPlaylists(playlists) {
-    moodPlaylistsContainer.innerHTML = ""; // Clear previous content
+  // Display Mood playlist
+  function renderMoodPlaylist(playlist) {
+    moodPlaylistsContainer.empty(); // Clear previous content
 
-    playlists.forEach((playlist) => {
-      const playlistDiv = document.createElement("div");
-      playlistDiv.style.borderRadius = "1rem";
-      playlistDiv.style.boxShadow = "4px 1px 30px rgba(219, 52, 235)";
-
-      const playlistImage = document.createElement("img");
-      playlistImage.src = playlist.images[0].url;
-      playlistDiv.appendChild(playlistImage);
-
-      const playlistTitle = document.createElement("h3");
-      playlistTitle.textContent = playlist.name;
-      playlistDiv.appendChild(playlistTitle);
-
-      const playlistTracks = document.createElement("p");
-      playlistTracks.textContent = `${playlist.tracks.total} TRACKS`;
-      playlistDiv.appendChild(playlistTracks);
-
-      const loadButton = document.createElement("button");
-      loadButton.textContent = "Load Mood To Playlist";
-      loadButton.addEventListener("click", () => {
-        getPlaylistID(playlist.uri);
-      });
-      playlistDiv.appendChild(loadButton);
-
-      moodPlaylistsContainer.appendChild(playlistDiv);
+    const playlistDiv = $("<div>").css({
+      borderRadius: "1rem",
+      boxShadow: "4px 1px 30px rgba(219, 52, 235)",
     });
+
+    const playlistImage = $("<img>").attr("src", playlist.images[0].url);
+    playlistDiv.append(playlistImage);
+
+    const playlistTitle = $("<h3>").text(playlist.name);
+    playlistDiv.append(playlistTitle);
+
+    const playlistTracks = $("<p>").text(playlist.tracks.total +  "TRACKS");
+    playlistDiv.append(playlistTracks);
+
+    const loadButton = $("<button>").text("Load Mood To Playlist");
+    loadButton.on("click", () => {
+      getPlaylistTracks(playlist.id);
+    });
+    playlistDiv.append(loadButton);
+
+    moodPlaylistsContainer.append(playlistDiv);
   }
 
-  function getPlaylistID(uri) {
-    selectedPlaylistUri = uri;
-    console.log("Selected Playlist URI:", selectedPlaylistUri);
 
-    // Optionally, you can proceed with loading the selected mood to the playlist
-    loadMoodToPlaylist();
+  function getPlaylistTracks(playlistId) {
+    authenticateSpotify()
+      .then((accessToken) => {
+        const playlistTracksEndpoint =
+          "https://api.spotify.com/v1/playlists/" + playlistId + "/tracks";
+
+        return $.ajax({
+          url: playlistTracksEndpoint,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+      })
+      .then((response) => {
+        const tracks = response.items;
+        console.log("Tracks in the selected playlist:", tracks, response);
+        
+        // Make array of artist names
+        let artist = []
+
+        
+       for(let i = 0; i < tracks.length; i++) {
+        artist.push(tracks[i].track.artists[0].name); 
+        //console.log(tracks[i].track.artists[0].name, artist)
+       };
+       //Log artists in array
+       console.log(artist)
+      })
+      .catch((error) => {
+        console.error("Error retrieving playlist tracks:", error);
+      });
   }
 
-  function loadMoodToPlaylist() {
-    // Implement load mood to playlist logic here
-  }
+ 
 
-  const searchButton = document.getElementById("searchButton");
-  searchButton.addEventListener("click", getSearchInput);
+  const searchButton = $("#searchButton");
+  searchButton.on("click", getSearchInput);
 
-  // ... (Rest of your code)
 });
