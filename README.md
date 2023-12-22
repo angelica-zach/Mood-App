@@ -12,7 +12,7 @@
 
 ## Full Description
 
-MoodHub is a web application that helps users discover music playlists based on their mood, provides information about venues related to the artists in the playlist, and suggests activities in the area.
+MoodMatch is a web application that helps users discover music playlists based on their mood, provides information about venues related to the artists in the playlist, and suggests activities in the area.
 
 URL of deployed app:  https://angelica-zach.github.io/Mood-App/
 
@@ -24,6 +24,7 @@ URL of deployed app:  https://angelica-zach.github.io/Mood-App/
 
 2. **Playlist and Artist Information:**
    - After selecting a mood, users are presented with a curated playlist on Spotify.
+
    - Information about the artists in the playlist is displayed, sourced from a server-side API.
    - Users can explore details about each artist, such as upcoming events or popular albums.
 
@@ -31,7 +32,17 @@ URL of deployed app:  https://angelica-zach.github.io/Mood-App/
    - Based on the selected artist, the application fetches information about venues where the artist has performed.
    - Users can view details about these venues, including location and upcoming events.
 
-4. BONUS FUNCTIONALITY = **Local Activities:**
+4. **Local Activities:**
+   - The application suggests activities in the area of the selected venue.
+   - Activities could include local attractions, events, or places of interest.
+
+#### APIS
+
+- **YouTube API:** Integration for playlist retrieval.
+- **Google Maps** 
+- MusixXmatch
+
+4. **Local Activities:**
    - The application suggests activities in the area of the selected venue.
    - Activities could include local attractions, events, or places of interest.
 
