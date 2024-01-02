@@ -19,15 +19,17 @@
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   </head>
   <body>
-    <nav class="navbar bg-body-tertiary">
+    <!-- Navbar -->
+    <nav class="navbar sticky-top bg-body-tertiary">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="#moodCards">
           <img src="assets/images/logo.png" alt="Logo" width="30" height="24" />
           Mood Match
         </a>
+        <h2>find your groove</h2>
       </div>
     </nav>
-
+    <!-- mood cards carousel -->
     <div id="moodCards">
       <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-indicators">
@@ -193,6 +195,7 @@
       </div>
     </div>
     <br />
+    <!-- artist card -->
     <div id="artist">
       <div class="card text-bg-dark">
         <img class="card-img" />
@@ -201,14 +204,14 @@
         </div>
       </div>
     </div>
-
+    <!-- spotify player -->
     <div id="player" class="align-middle col-sm-10 col-md-8">
       spotify player goes here
     </div>
     <div id="venues" class="row mt-3"></div>
     <!--venues cards will be added by tourdates.js-->
 
-    <footer></footer>
+    <footer>add our details</footer>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
