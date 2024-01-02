@@ -1,76 +1,4 @@
-
-#moodCards{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-
-}
-#artist{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-#venues{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-
-body, h1, h2, h3, p, ul {
-  margin: 1px;
-  padding: 1px;
-  font-family:Georgia, 'Times New Roman', Times, serif;
-}
-body{
-  background-color: #fcf9ef;
-}
-.navbar{
-  color:  #800000;
-}
-.navbar-brand{
-  font-stretch: expanded;
-}
-
-#moodCards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1000px;
-  padding: 0 20px;
-}
-#artist{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1000px;
-    padding: 0 20px;
-}
-#venues{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1000px;
-    padding: 0 20px;
-}
-
-/*
+/* Reset some default styles */
 body, h1, h2, h3, p, ul {
     margin: 0;
     padding: 0;
@@ -161,4 +89,4 @@ body, h1, h2, h3, p, ul {
   
   button:hover {
     background-color: #6A1B9A;
-  }*/
+  }

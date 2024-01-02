@@ -1,131 +1,148 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const storedSearchesContainer = document.getElementById("storedSearchesContainer");
-  const searchInput = document.getElementById("searchInput");
-  const moodPlaylistsContainer = document.getElementById("moodPlaylistsContainer");
-  const spotifyPlayerContainer = document.getElementById("spotifyPlayerContainer");
+$(document).ready(function () {
+    const storedSearchesContainer = $("#storedSearchesContainer");
+    const searchInput = $("#searchInput");
+    const moodPlaylistsContainer = $("#moodPlaylistsContainer");
+    const spotifyPlayerContainer = $("#spotifyPlayerContainer");
 
-  let searchInputValue = "";
-  let accessToken = "";
-  let moodPlaylists = [];
-  let selectedPlaylistUri = "";
+    let searchInputValue = "";
+    let accessToken = ""
+    let moodPlaylists = [];
+    let selectedPlaylistUri = "";
 
-  // API Keys
-  const youtubeApiKey = 'YOUR_YOUTUBE_API_KEY';
-  const musixmatchApiKey = 'YOUR_MUSIXMATCH_API_KEY';
-  const googleMapsApiKey = 'YOUR_GOOGLE_MAPS_API_KEY';
 
-  // API URLs
-  const youtubeApiUrl = 'YOUR_YOUTUBE_API_URL';
-  const musixmatchApiUrl = 'YOUR_MUSIXMATCH_API_URL';
-  const googleMapsApiUrl = 'YOUR_GOOGLE_MAPS_API_URL';
+    // Function to search for moods
+    function getPlaylistTracks(playlistId) {
+        authenticateSpotify()
+            .then(() => {
+                const playlistTracksEndpoint = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
 
-  // Mood Selection
-  const moods = ['Happy', 'Chill', 'Energetic', 'Relaxed', 'Excited', 'Calm', 'Upbeat', 'Peaceful', 'Playful'];
+                return axios.get(playlistTracksEndpoint, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                });
+            })
+            .then((response) => {
+                const tracks = response.data.items;
+                console.log("Tracks in the selected playlist:", tracks);
 
-  function displayMoodCards() {
-    moodPlaylistsContainer.innerHTML = "";
-    moods.forEach((mood) => {
-      const moodCard = document.createElement("div");
-      moodCard.className = "mood-card";
-      moodCard.textContent = mood;
-      moodCard.onclick = () => selectMood(mood);
-      moodPlaylistsContainer.appendChild(moodCard);
-    });
-  }
+            })
+            .catch((error) => {
+                console.error("Error retrieving playlist tracks:", error);
+            });
+    }
 
-  function clearForm() {
-    searchInput.value = "";
-    displayMoodCards();
-  }
+    function getSearchInput() {
+        searchInputValue = searchInput.val();
+        console.log("Search input value:", searchInputValue);
+        search(searchInputValue);
+    }
 
-  // Artist & Playlist Info
-  function search(searchValue) {
-    authenticateSpotify()
-      .then((accessToken) => {
-        const searchEndpoint = `https://api.spotify.com/v1/search?q=${searchValue}&type=playlist`;
+    function search(searchValue) {
+        authenticateSpotify()
+            .then((accessToken) => {
+                const searchEndpoint = `https://api.spotify.com/v1/search?q=${searchValue}&type=playlist`;
 
-        return axios.get(searchEndpoint, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-      })
-      .then((response) => {
-        const playlists = response.data.playlists.items;
-        renderMoodPlaylists(playlists);
-      })
-      .catch((error) => {
-        console.error("Error searching for playlists:", error);
-      });
-  }
+                return $.ajax({
+                    url: searchEndpoint,
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                });
+            })
+            .then((response) => {
+                const playlists = response.playlists.items;
+                console.log(
+                    "Playlists:",
+                    playlists,
+                    response,
+                    response.playlists.items[0].tracks
+                );
 
-  function authenticateSpotify() {
-    const clientId = 'YOUR_SPOTIFY_CLIENT_ID';
-    const clientSecret = 'YOUR_SPOTIFY_CLIENT_SECRET';
+                // Only Render the first playlist
+                if (playlists.length > 0) {
+                    renderMoodPlaylist(playlists[0]);
+                }
+            })
+            .catch((error) => {
+                console.error("Error searching for playlists:", error);
+            });
+    }
 
-    const base64Credentials = btoa(`${clientId}:${clientSecret}`);
+    function authenticateSpotify() {
+        // REPLACE CLIENT ID
+        const clientId = "746bd7c02af2439a94e089e6a1cdfa95";
+        const clientSecret = "5613691d1dfe4c9a8b0ab38d79f3170f";
 
-    return axios
-      .post(
-        "https://accounts.spotify.com/api/token",
-        "grant_type=client_credentials",
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            Authorization: `Basic ${base64Credentials}`,
-          },
-        }
-      )
-      .then((response) => response.data.access_token)
-      .catch((error) => {
-        console.error("Error authenticating with Spotify:", error);
-        throw error;
-      });
-  }
+        const base64Credentials = btoa(`${clientId}:${clientSecret}`);
 
-  function renderMoodPlaylists(playlists) {
-    moodPlaylistsContainer.innerHTML = "";
-    playlists.forEach((playlist) => {
-      const playlistDiv = document.createElement("div");
-      playlistDiv.className = "mood-card";
-      playlistDiv.style.borderRadius = "1rem";
-      playlistDiv.style.boxShadow = "4px 1px 30px rgba(219, 52, 235)";
+        return $.ajax({
+            type: "POST",
+            url: "https://accounts.spotify.com/api/token",
+            data: "grant_type=client_credentials",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                Authorization: `Basic ${base64Credentials}`,
+            },
+        })
+            .then((response) => response.access_token)
+            .catch((error) => {
+                console.error("Error authenticating with Spotify:", error);
+                throw error;
+            });
 
-      const playlistImage = document.createElement("img");
-      playlistImage.src = playlist.images[0].url;
-      playlistDiv.appendChild(playlistImage);
+    }
 
-      const playlistTitle = document.createElement("h3");
-      playlistTitle.textContent = playlist.name;
-      playlistDiv.appendChild(playlistTitle);
+     // Get Tracks to show on search
+    function renderMoodPlaylist(playlist) {
+        getPlaylistTracks(playlist.id);
+    }
 
-      const playlistTracks = document.createElement("p");
-      playlistTracks.textContent = `${playlist.tracks.total} TRACKS`;
-      playlistDiv.appendChild(playlistTracks);
+    
+    //API Calls for each Track, Make HTML Elements
+    function getPlaylistTracks(playlistId) {
 
-      const loadButton = document.createElement("button");
-      loadButton.textContent = "Load Mood To Playlist";
-      loadButton.addEventListener("click", () => {
-        getPlaylistID(playlist.uri);
-      });
-      playlistDiv.appendChild(loadButton);
+        authenticateSpotify()
+            .then((accessToken) => {
+                const playlistTracksEndpoint =
+                    "https://api.spotify.com/v1/playlists/" + playlistId + "/tracks";
 
-      moodPlaylistsContainer.appendChild(playlistDiv);
-    });
-  }
+                return $.ajax({
+                    url: playlistTracksEndpoint,
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                });
+            })
+            .then((response) => {
+              const tracks = response.items;
+              console.log("Tracks in the selected playlist:", tracks);
+              moodPlaylistsContainer.empty(); // Clear previous content
 
-  function getPlaylistID(uri) {
-    selectedPlaylistUri = uri;
-    loadMoodToPlaylist();
-  }
+              tracks.forEach((track) => {
+                console.log("Track name:", track.track.album.images[0].url);
 
-  function loadMoodToPlaylist() {
-    // Implement load mood to playlist logic here
-  }
+                // Display image for each track
+                let albCov = $("<img>").attr(
+                  "src",
+                  track.track.album.images[0].url
+                );
+                moodPlaylistsContainer.append(albCov);
 
-  // Other functions from your original code...
+                // If they like the song, show events
+                albCov.on("click", function() {
+                    console.log(track.track.artists[0].name);
+                    searchEvents(track.track.artists[0].name);
+                });
 
-  // Initial setup
-  displayMoodCards();
-  clearForm();
+              });
+            })
+            .catch((error) => {
+                console.error("Error retrieving playlist tracks:", error);
+            });
+    }
+
+
+    const searchButton = $("#searchButton");
+    searchButton.on("click", getSearchInput);
 });
