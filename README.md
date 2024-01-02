@@ -18,11 +18,13 @@ URL of deployed app:  https://angelica-zach.github.io/Mood-App/
 
 ## Features
 
+
 1. **Mood Selection:**
    - Users start by selecting a mood card or similar element.
    - Each mood card represents a specific category or genre of music.
 
 2. **Playlist and Artist Information:**
+
    - After selecting a mood, users are presented with a curated playlist on Spotify.
 
    - Information about the artists in the playlist is displayed, sourced from a server-side API.
@@ -36,15 +38,13 @@ URL of deployed app:  https://angelica-zach.github.io/Mood-App/
    - The application suggests activities in the area of the selected venue.
    - Activities could include local attractions, events, or places of interest.
 
+
 #### APIS
 
 - **YouTube API:** Integration for playlist retrieval.
 - **Google Maps** 
 - MusixXmatch
 
-4. **Local Activities:**
-   - The application suggests activities in the area of the selected venue.
-   - Activities could include local attractions, events, or places of interest.
 
 ## How to Use
 
