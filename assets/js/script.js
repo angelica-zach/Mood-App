@@ -101,6 +101,7 @@ $(document).ready(function () {
     
     //API Calls for each Track, Make HTML Elements
     function getPlaylistTracks(playlistId) {
+
         authenticateSpotify()
             .then((accessToken) => {
                 const playlistTracksEndpoint =
