@@ -1,6 +1,18 @@
-.navbar-brand{
-  font-family: monospace;
+body, h1, h2, h3, p, ul {
+  margin: 1px;
+  padding: 1px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
 }
+body{
+  background-color: #fcf9ef;
+}
+.navbar{
+  color:  #800000;
+}
+.navbar-brand{
+  font-stretch: expanded;
+}
+
 #moodCards {
   display: flex;
   flex-wrap: wrap;
