@@ -1,4 +1,3 @@
-
 #moodCards{
   display:flex;
   flex-wrap:wrap;
@@ -16,6 +15,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 #venues{
   display:flex;
   flex-wrap:wrap;
@@ -23,6 +23,7 @@
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
+}
 
 body, h1, h2, h3, p, ul {
   margin: 1px;
