@@ -49,7 +49,8 @@ function searchEvents(artist) {
 
         // INSERT MODAL BELOW INSTEAD OF ALERT
 
-        alert("Sorry, this artist isn't touring right now");
+        let myModal = new bootstrap.Modal(document.getElementById('myModal'));
+        myModal.show();
       } else {
         // Show what cities there are
         $("#moodPlaylistsContainer").empty();
