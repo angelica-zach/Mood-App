@@ -46,25 +46,24 @@ function searchEvents(artist) {
       console.log(upcomingEvents);
       // Let them know there are no tour dates
       if (upcomingEvents.length == 0) {
-
-        // INSERT MODAL BELOW INSTEAD OF ALERT
-
         let myModal = new bootstrap.Modal(document.getElementById('myModal'));
         myModal.show();
       } else {
         // Show what cities there are
         $("#moodPlaylistsContainer").empty();
-        upcomingEvents.forEach((concert) => {
-            let city = $("<p>").text(concert.city);
-            $("#moodPlaylistsContainer").append(city);
-        })
+        $("#moodPlaylistsContainer").append("<h3> Upcoming Events for " + artist);
+        for (let i=0; i < upcomingEvents.length; i ++) {
 
+            let date = dayjs(upcomingEvents[i].dateTime).format("D/M/YYYY");
+            let time = dayjs(upcomingEvents[i].dateTime).format('h A');
+
+            $("#moodPlaylistsContainer").append("<div class='card text-bg-dark m-3 p-3 col-3'>");
+            $("#moodPlaylistsContainer").children().eq(i+1).append('<h5 class=card-title>' + upcomingEvents[i].city + ', ' + upcomingEvents[i].country);
+            $("#moodPlaylistsContainer").children().eq(i+1).append('<p class=card-text> Date: ' + date);
+            $("#moodPlaylistsContainer").children().eq(i+1).append('<p class=card-text> Time: ' + time);
+        }
       }
-      
 
       return upcomingEvents;
     });
 }
-
-// searchArtistData("Taylor Swift"); //an example to show taylor swift tour dates.
-// searchEvents("Taylor Swift");
