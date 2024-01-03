@@ -38,38 +38,9 @@ body{
 }
 .navbar-brand{
   font-stretch: expanded;
+  margin-left: 15px;
 }
 
-#moodCards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1000px;
-  padding: 0 20px;
-}
-#artist{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1000px;
-    padding: 0 20px;
-}
-#venues{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1000px;
-    padding: 0 20px;
-}
   
 /* Custom CSS for improving carousel arrow buttons visibility */
 .carousel-control-prev, .carousel-control-next {
@@ -120,4 +91,4 @@ body{
   
   button:hover {
     background-color: #6A1B9A;
-  }*/
+  }
