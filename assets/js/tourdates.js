@@ -62,11 +62,11 @@ function searchEvents(artist) {
         let data = JSON.parse(stored);
         console.log(data);
         for (let i = 0; i < data.length; i++) {
-          let date = dayjs(data[i].dateTime).format("D/M/YYYY");
+          let date = dayjs(data[i].dateTime).format("dddd, MMMM D, YYYY");
           let time = dayjs(data[i].dateTime).format("h A");
 
           $("#moodPlaylistsContainer").append(
-            "<div class='card text-bg-dark m-3 p-3 col-3'>"
+            "<div class='card text-bg-light m-3 p-3 col-3'>"
           );
           $("#moodPlaylistsContainer")
             .children()
@@ -77,11 +77,11 @@ function searchEvents(artist) {
           $("#moodPlaylistsContainer")
             .children()
             .eq(i + 1)
-            .append("<p class=card-text> Date: " + date);
+            .append("<p class=card-text>" + date);
           $("#moodPlaylistsContainer")
             .children()
             .eq(i + 1)
-            .append("<p class=card-text> Time: " + time);
+            .append("<p class=card-text>" + time);
         }
       }
 
