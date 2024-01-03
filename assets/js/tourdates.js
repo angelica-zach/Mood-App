@@ -54,12 +54,23 @@ function searchEvents(artist) {
         // Show what cities there are
         $("#moodPlaylistsContainer").empty();
         upcomingEvents.forEach((concert) => {
-            let city = $("<p>").text(concert.city);
-            $("#moodPlaylistsContainer").append(city);
+          let city = $("<p>");
+
+          let storeConcert = artist + " " + concert.city;
+
+
+          // Add events to Local Storage
+          localStorage.setItem(storeConcert, JSON.stringify(concert));
+          
+    
+          let stored = localStorage.getItem(storeConcert);
+          let data = JSON.parse(stored);
+          city.text(data.city);
+          $("#moodPlaylistsContainer").append(city);
         })
 
       }
-      
+
 
       return upcomingEvents;
     });
