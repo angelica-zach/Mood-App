@@ -118,7 +118,7 @@ $(document).ready(function () {
             .catch((error) => {
                 console.error("Error retrieving playlist tracks:", error);
             });
-    }
+    };
 
     calm.on("click", search("calm"));
     chill.on("click", search("chill"));
