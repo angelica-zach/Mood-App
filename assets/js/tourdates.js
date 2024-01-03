@@ -44,34 +44,47 @@ function searchEvents(artist) {
       }
 
       console.log(upcomingEvents);
+      // Store in Local Storage;
+      localStorage.setItem(artist, JSON.stringify(upcomingEvents));
+
       // Let them know there are no tour dates
       if (upcomingEvents.length == 0) {
-
-        // INSERT MODAL BELOW INSTEAD OF ALERT
-
-        alert("Sorry, this artist isn't touring right now");
+        let myModal = new bootstrap.Modal(document.getElementById("myModal"));
+        myModal.show();
       } else {
         // Show what cities there are
         $("#moodPlaylistsContainer").empty();
-        upcomingEvents.forEach((concert) => {
-          let city = $("<p>");
+        $("#moodPlaylistsContainer").append(
+          "<h3> Upcoming Events for " + artist
+        );
+        // Get data from Local Storage
+        let stored = localStorage.getItem(artist);
+        let data = JSON.parse(stored);
+        console.log(data);
+        for (let i = 0; i < data.length; i++) {
+          let date = dayjs(data[i].dateTime).format("D/M/YYYY");
+          let time = dayjs(data[i].dateTime).format("h A");
 
-          let storeConcert = artist + " " + concert.city;
-
-
-          // Add events to Local Storage
-          localStorage.setItem(storeConcert, JSON.stringify(concert));
-          
-    
-          let stored = localStorage.getItem(storeConcert);
-          let data = JSON.parse(stored);
-          city.text(data.city);
-          $("#moodPlaylistsContainer").append(city);
-        })
-
+          $("#moodPlaylistsContainer").append(
+            "<div class='card text-bg-dark m-3 p-3 col-3'>"
+          );
+          $("#moodPlaylistsContainer")
+            .children()
+            .eq(i + 1)
+            .append(
+              "<h5 class=card-title>" + data[i].city + ", " + data[i].country
+            );
+          $("#moodPlaylistsContainer")
+            .children()
+            .eq(i + 1)
+            .append("<p class=card-text> Date: " + date);
+          $("#moodPlaylistsContainer")
+            .children()
+            .eq(i + 1)
+            .append("<p class=card-text> Time: " + time);
+        }
       }
-
 
       return upcomingEvents;
     });
-};
+}
