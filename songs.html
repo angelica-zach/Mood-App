@@ -7,34 +7,14 @@
     <!-- Day.js -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <title>Music App</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
-  <body>
-    <nav class="navbar bg-body-tertiary">
-      <a class="navbar-brand" href="#">
-        <img src="./assets/pictures/MoodMatch Logo small.png" alt="Bootstrap" width="220" height="100">
-      </a>
-    </nav>
+  <body style="background-color: black;">
        <!-- Display mood playlists -->
-      <div class="container mt-4">
-        <div
-          class="row  mx-auto g-3"
-          style="width: 100%"
-          id="moodPlaylistsContainer"
-        ></div>
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 mx-auto g-3" style="width: 100%" id="moodPlaylistsContainer"></div>
       </div>
 
-      <!-- Spotify player section -->
-      <div class="container">
-        <div
-          class="container"
-          style="
-            border-radius: 1rem;
-            box-shadow: 0px 10px 30px rgba(219, 52, 235);
-          "
-        >
-        </div>
-      </div>
-    </div>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
