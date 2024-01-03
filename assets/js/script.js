@@ -126,6 +126,7 @@ $(document).ready(function () {
                   "src",
                   track.track.album.images[0].url
                 );
+                albCov.addClass("col-sm-6 col-md-4 col-lg-3") ;
                 moodPlaylistsContainer.append(albCov);
 
                 // If they like the song, show events
