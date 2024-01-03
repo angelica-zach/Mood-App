@@ -47,7 +47,6 @@ function searchEvents(artist) {
       // Store in Local Storage;
       localStorage.setItem(artist, JSON.stringify(upcomingEvents));
 
-
       // Let them know there are no tour dates
       if (upcomingEvents.length == 0) {
         let myModal = new bootstrap.Modal(document.getElementById("myModal"));
@@ -61,7 +60,7 @@ function searchEvents(artist) {
         // Get data from Local Storage
         let stored = localStorage.getItem(artist);
         let data = JSON.parse(stored);
-        console.log(data)
+        console.log(data);
         for (let i = 0; i < data.length; i++) {
           let date = dayjs(data[i].dateTime).format("D/M/YYYY");
           let time = dayjs(data[i].dateTime).format("h A");
@@ -73,10 +72,7 @@ function searchEvents(artist) {
             .children()
             .eq(i + 1)
             .append(
-              "<h5 class=card-title>" +
-                data[i].city +
-                ", " +
-                data[i].country
+              "<h5 class=card-title>" + data[i].city + ", " + data[i].country
             );
           $("#moodPlaylistsContainer")
             .children()
