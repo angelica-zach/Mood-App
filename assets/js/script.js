@@ -16,28 +16,6 @@ $(document).ready(function () {
 
 
     // Function to search for moods
-    function getPlaylistTracks(playlistId) {
-        authenticateSpotify()
-            .then(() => {
-                const playlistTracksEndpoint = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
-
-                return axios.get(playlistTracksEndpoint, {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                });
-            })
-            .then((response) => {
-                const tracks = response.data.items;
-                console.log("Tracks in the selected playlist:", tracks);
-
-            })
-            .catch((error) => {
-                console.error("Error retrieving playlist tracks:", error);
-            });
-    }
-
-
     function search(searchValue) {
         authenticateSpotify()
             .then((accessToken) => {
@@ -140,7 +118,7 @@ $(document).ready(function () {
             .catch((error) => {
                 console.error("Error retrieving playlist tracks:", error);
             });
-    }
+    };
 
     calm.on("click", search("calm"));
     chill.on("click", search("chill"));
