@@ -9,11 +9,7 @@ $(document).ready(function () {
     let nostalgic = $("#nostalgic");
     let random = $("#random");
 
-    console.log(calm,chill,concentrate,energised)
-
     let moodPlaylistsContainer = $("#moodPlaylistsContainer");
-
-
 
     // Function to search for moods
     function search(searchValue) {
@@ -30,12 +26,6 @@ $(document).ready(function () {
             })
             .then((response) => {
                 const playlists = response.playlists.items;
-                console.log(
-                    "Playlists:",
-                    playlists,
-                    response,
-                    response.playlists.items[0].tracks
-                );
 
                 // Only Render the first playlist
                 if (playlists.length > 0) {
@@ -94,7 +84,6 @@ $(document).ready(function () {
             })
             .then((response) => {
               const tracks = response.items;
-              console.log("Tracks in the selected playlist:", tracks);
               moodPlaylistsContainer.empty(); // Clear previous content
 
               tracks.forEach((track) => {
@@ -109,7 +98,6 @@ $(document).ready(function () {
 
                 // If they like the song, show events
                 albCov.on("click", function() {
-                    console.log(track.track.artists[0].name);
                     searchEvents(track.track.artists[0].name);
                 });
 
