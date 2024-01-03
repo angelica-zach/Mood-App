@@ -74,7 +74,4 @@ function searchEvents(artist) {
 
       return upcomingEvents;
     });
-}
-
-// searchArtistData("Taylor Swift"); //an example to show taylor swift tour dates.
-// searchEvents("Taylor Swift");
+};
