@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     console.log(calm,chill,concentrate,energised)
 
-    let moodPlaylistsContainer = $("moodPlaylistsContainer");
+    let moodPlaylistsContainer = $("#moodPlaylistsContainer");
 
 
 
@@ -120,7 +120,6 @@ $(document).ready(function () {
               moodPlaylistsContainer.empty(); // Clear previous content
 
               tracks.forEach((track) => {
-                console.log("Track name:", track.track.album.images[0].url);
 
                 // Display image for each track
                 let albCov = $("<img>").attr(

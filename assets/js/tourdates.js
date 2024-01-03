@@ -46,6 +46,9 @@ function searchEvents(artist) {
       console.log(upcomingEvents);
       // Let them know there are no tour dates
       if (upcomingEvents.length == 0) {
+
+        // INSERT MODAL BELOW INSTEAD OF ALERT
+
         alert("Sorry, this artist isn't touring right now");
       } else {
         // Show what cities there are
