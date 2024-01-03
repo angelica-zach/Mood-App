@@ -1,13 +1,18 @@
 $(document).ready(function () {
-    const storedSearchesContainer = $("#storedSearchesContainer");
-    const searchInput = $("#searchInput");
-    const moodPlaylistsContainer = $("#moodPlaylistsContainer");
-    const spotifyPlayerContainer = $("#spotifyPlayerContainer");
 
-    let searchInputValue = "";
-    let accessToken = ""
-    let moodPlaylists = [];
-    let selectedPlaylistUri = "";
+    let calm = $("#calm");
+    let chill = $("#chill");
+    let concentrate = $("#concentrate");
+    let energised = $("#energised");
+    let euphoric = $("#euphoric");
+    let groovy = $("#groovy");
+    let nostalgic = $("#nostalgic");
+    let random = $("#random");
+
+    console.log(calm,chill,concentrate,energised)
+
+    let moodPlaylistsContainer = $("#moodPlaylistsContainer");
+
 
 
     // Function to search for moods
@@ -32,11 +37,6 @@ $(document).ready(function () {
             });
     }
 
-    function getSearchInput() {
-        searchInputValue = searchInput.val();
-        console.log("Search input value:", searchInputValue);
-        search(searchInputValue);
-    }
 
     function search(searchValue) {
         authenticateSpotify()
@@ -120,7 +120,6 @@ $(document).ready(function () {
               moodPlaylistsContainer.empty(); // Clear previous content
 
               tracks.forEach((track) => {
-                console.log("Track name:", track.track.album.images[0].url);
 
                 // Display image for each track
                 let albCov = $("<img>").attr(
@@ -142,7 +141,14 @@ $(document).ready(function () {
             });
     }
 
+    calm.on("click", search("calm"));
+    chill.on("click", search("chill"));
+    concentrate.on("click", search("concentrate"));
+    energised.on("click", search("energised"));
+    euphoric.on("click", search("euphoric"));
+    groovy.on("click", search("groovy"));
+    nostalgic.on("click", search("nostalgic"));
+    random.on("click", search("random"));
+    console.log(moodPlaylistsContainer);
 
-    const searchButton = $("#searchButton");
-    searchButton.on("click", getSearchInput);
 });
