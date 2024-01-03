@@ -54,13 +54,13 @@ function searchEvents(artist) {
         $("#moodPlaylistsContainer").append("<h3> Upcoming Events for " + artist);
         for (let i=0; i < upcomingEvents.length; i ++) {
 
-            let date = dayjs(upcomingEvents[i].dateTime).format("D/M/YYYY");
+            let date = dayjs(upcomingEvents[i].dateTime).format("dddd, MMMM D, YYYY");
             let time = dayjs(upcomingEvents[i].dateTime).format('h A');
 
-            $("#moodPlaylistsContainer").append("<div class='card text-bg-dark m-3 p-3 col-3'>");
+            $("#moodPlaylistsContainer").append("<div class='card text-bg-light m-3 p-3 col-3'>");
             $("#moodPlaylistsContainer").children().eq(i+1).append('<h5 class=card-title>' + upcomingEvents[i].city + ', ' + upcomingEvents[i].country);
-            $("#moodPlaylistsContainer").children().eq(i+1).append('<p class=card-text> Date: ' + date);
-            $("#moodPlaylistsContainer").children().eq(i+1).append('<p class=card-text> Time: ' + time);
+            $("#moodPlaylistsContainer").children().eq(i+1).append('<p class=card-text>' + date);
+            $("#moodPlaylistsContainer").children().eq(i+1).append('<p class=card-text>' + time);
         }
       }
 
