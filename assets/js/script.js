@@ -12,7 +12,6 @@ $(document).ready(function () {
     let moodPlaylistsContainer = $("#moodPlaylistsContainer");
 
     // Function to search for moods
-    
     function search(searchValue) {
         authenticateSpotify()
             .then((accessToken) => {
