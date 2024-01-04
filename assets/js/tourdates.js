@@ -54,6 +54,7 @@ function searchEvents(artist) {
       } else {
         // Show what cities there are
         $("#moodPlaylistsContainer").empty();
+        $("#moodPlaylistsContainer").removeClass("row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5");
         $("#moodPlaylistsContainer").append(
           "<h3> Upcoming Events for " + artist
         );
@@ -66,7 +67,7 @@ function searchEvents(artist) {
           let time = dayjs(data[i].dateTime).format("h A");
 
           $("#moodPlaylistsContainer").append(
-            "<div class='card text-bg-light m-3 p-3 col-3'>"
+            "<div class='card text-bg-light m-3 p-3 col-2'>"
           );
           $("#moodPlaylistsContainer")
             .children()
