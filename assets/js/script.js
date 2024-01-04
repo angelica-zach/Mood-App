@@ -39,8 +39,8 @@ $(document).ready(function () {
 
     function authenticateSpotify() {
         // REPLACE CLIENT ID
-        const clientId = "746bd7c02af2439a94e089e6a1cdfa95";
-        const clientSecret = "5613691d1dfe4c9a8b0ab38d79f3170f";
+        const clientId = "32d73e004d394cde9908ed44bb84ecf0";
+        const clientSecret = "dc306bcd04bb4d3c9d538a086c448a04";
 
         const base64Credentials = btoa(`${clientId}:${clientSecret}`);
 
