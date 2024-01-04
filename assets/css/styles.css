@@ -32,6 +32,11 @@ body, h1, h2, h3, p, ul {
   padding: 1px;
   font-family:Georgia, 'Times New Roman', Times, serif;
 }
+
+#moodPlaylistsContainer h3 {
+  color: white;
+}
+
 body{
  background-color: white;
 }
