@@ -120,3 +120,11 @@ body{
   transform: scale(1.1);
 }
 
+.span-text {
+  margin: 1px;
+  padding: 1px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 40px;
+  color: #800000;
+}
+
