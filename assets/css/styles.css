@@ -1,14 +1,12 @@
-#moodCards{
-  display:flex;
-  flex-wrap:wrap;
+#moodCards {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 5px;
-  margin-right: 5px;
-
+  margin: 20px auto; 
+  max-width: 80%; 
 }
+
 #artist{
   display:flex;
   flex-wrap:wrap;
