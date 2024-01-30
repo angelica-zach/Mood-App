@@ -39,7 +39,9 @@ Download by pressing the green code button and git clone into your terminal . Al
 
 ## Screenshot
 
-![MoodHub App Screenshot](./assets/moodhub-screenshot.png)
+![MoodHub App Screenshot](./assets/images/Mood%20App%20Screenshot.PNG)
+![MoodHub App Screenshot](./assets/images/Mood%20App%20Screenshot%202.PNG)
+![MoodHub App Screenshot](./assets/images/Mood%20App%20Screenshot%203.PNG)
 
 ## Credits
 
